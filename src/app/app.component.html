@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row justify-content-center align-items-center">
+    <div class="col col-lg-6">
+      <div class="text-center">
+        <h3 [hidden]="isCross" class="uppercase text-danger">Player One Turn</h3>
+        <h3 [hidden]="!isCross" class="uppercase text-danger">Player Two Turn</h3>
+      </div>
+      <div class="grid">
+        <div *ngFor="let item of itemArray; index as i">
+          <div class="card">
+            <div class="card-box box" (click)="handleClick(i)">
+              <app-icon [iconName]='item'></app-icon>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col col-lg-6 text-center" *ngIf="winMessage || checkForTie()">
+      <h1 class="text-uppercase">{{winMessage}}</h1>
+      <h1 class="text-uppercase">{{checkForTie()}}</h1>
+      <button class="btn btn-danger text-uppercase pl-5 pr-5" (click)="reloadGame()">Reload Game</button>
+    </div>
+  </div>
+</div>
